@@ -1,0 +1,1 @@
+export const SKILLS = ["Nextjs","React", "Nodejs", "Expressjs", "Prisma", "PostgreSQL", "JWT", "Git", "GitHub"]
