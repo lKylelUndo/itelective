@@ -3,7 +3,7 @@ import { Server, Code, Cloud, MessageCircle, LucideIcon } from "lucide-react";
 export type ServicesTypes = {
     title: string,
     description: string,
-    icon?: LucideIcon;
+    icon?: any;
 }
 
 export const services = [
