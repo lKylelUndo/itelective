@@ -23,10 +23,10 @@ const AboutBanner = () => {
   
           <div className="mt-8 md:p-0 p-4">
             <p className="text-wrap text-justify md:text-sm text-[12.5px] leading-8">
-              Hi! I'm Kyle Ando a student developer passionate about building modern web
+              Hi! I{"'"}m Kyle Ando a student developer passionate about building modern web
               applications and continuously learning new technologies. I enjoy
               working with JavaScript, React, and tools that help bring ideas to
-              life through code. I'm currently expanding my knowledge in
+              life through code. I{"'"}m currently expanding my knowledge in
               full-stack development and always open to collaboration and new
               challenges.
             </p>
