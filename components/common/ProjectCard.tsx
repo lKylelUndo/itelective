@@ -9,7 +9,15 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
   return (
     <Card>
       <CardHeader>
-        <Image src={`${project.project_image}`} width={500} height={300} alt="Alt" className="h-47.5" priority />
+      <div className="relative w-full h-48">
+        <Image
+          src={`${project.project_image}`}
+          fill
+          className="object-cover rounded-t-lg"
+          alt="Project Image"
+          priority
+        />
+      </div>
         <CardTitle>{project.project_title}</CardTitle>
       </CardHeader>
       <CardContent>

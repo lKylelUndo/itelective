@@ -1,17 +1,18 @@
-import { projectsObj, ProjectType } from "@/constants/projects"
-import ProjectCard from "../common/ProjectCard"
+import { projectsObj, ProjectType } from "@/constants/projects";
+import ProjectCard from "../common/ProjectCard";
 
 const AllProjects = () => {
   return (
-     <section className="mt-8 container mx-auto">
+    <section className="container mx-auto px-6 mt-8">
       <h1 className="text-center font-bold text-3xl">All Projects</h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 p-4 mt-12">
-          {projectsObj.map((project: ProjectType) => (
-            <ProjectCard key={project.id} project={project} /> 
-          ))}
+
+      <div className="grid gap-6 mt-10 sm:grid-cols-2 lg:grid-cols-3">
+        {projectsObj.map((project: ProjectType) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AllProjects
+export default AllProjects;

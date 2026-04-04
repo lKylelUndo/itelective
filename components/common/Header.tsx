@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <header className="p-4 relative">
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="container mx-auto lg:px-6 flex justify-between items-center">
         <h1 className="font-bold text-xl">Kyle Ando</h1>
 
         {/* Desktop */}

@@ -11,7 +11,7 @@ const MyBlogs = () => {
         <CategoryButtons />
       </div>
 
-      <div className="p-5 grid grid-cols-1 lg:grid-cols-3 gap-x-4  gap-y-4 mt-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-4 gap-y-4 mt-10">
         {blogsObj.map((blog: BlogType) => (
             <BlogCard key={blog.id} blog={blog} />
         ))}
