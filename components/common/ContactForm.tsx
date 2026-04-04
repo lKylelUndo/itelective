@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { Card, CardAction, CardContent } from "../ui/card";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import Link from "next/link";
 
 const ContactForm = () => {
   return (
@@ -31,8 +32,8 @@ const ContactForm = () => {
                 Connect With Me
              </div>
               <div className="mt-4 space-x-4">
-                <Button variant={"outline"}><Linkedin/> LinkedIn</Button>
-                <Button variant={"outline"}><Github/> Github</Button>
+                <Link href={'https://www.linkedin.com/in/kyle-ando-942947289/'} target="_blank"><Button variant={"outline"}><Linkedin/> LinkedIn</Button></Link>
+                <Link href={'https://github.com/lkylelUndo'} target="_blank"><Button variant={"outline"}><Github/> Github</Button></Link>
               </div>
             </CardContent>
           </Card>
