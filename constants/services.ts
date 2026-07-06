@@ -10,13 +10,13 @@ export const services = [
   {
     title: "Consultation",
     description:
-      "Get expert guidance on architecture, scalability, and best practices for your projects.",
+      "Get guidance on architecture, scalability, and best practices for your projects.",
     icon: MessageCircle,
   },
   {
     title: "Backend Development",
     description:
-      "Build scalable APIs and systems using Express.js and NestJS with clean architecture.",
+      "Build scalable APIs and systems using Express.js and Laravel with clean architecture.",
     icon: Server,
   },
   {

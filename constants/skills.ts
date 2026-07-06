@@ -1,1 +1,12 @@
-export const SKILLS = ["Nextjs","React", "Nodejs", "Expressjs", "Prisma", "PostgreSQL", "JWT", "Git", "GitHub"]
+export const SKILLS = [
+  "Nextjs",
+  "React",
+  "Nodejs",
+  "Expressjs",
+  "Laravel",
+  "Prisma",
+  "PostgreSQL",
+  "JWT",
+  "Git",
+  "GitHub",
+];
