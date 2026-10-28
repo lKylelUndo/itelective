@@ -21,8 +21,8 @@ const AllProjects = ({
         All projects<span className="text-ember">.</span>
       </h1>
       <p className="mt-5 max-w-[55ch] text-[16px] leading-relaxed text-urn">
-        Two builds that taught me the most — full-stack platforms designed,
-        engineered, and shipped end to end.
+        Projects that taught me the most — designed, engineered, and shipped
+        end to end.
       </p>
 
       <div className="mt-12 grid gap-8 md:grid-cols-2">

@@ -3,7 +3,11 @@ import ProjectCard from "../common/ProjectCard";
 import Link from "next/link";
 
 const HomeTopProjects = () => {
-  const topProjects = projectsObj.slice(0, 3);
+  // Only the flagship builds — driven by the `flagship` flag in the data,
+  // so adding flagship projects later needs no change here.
+  const flagshipProjects = projectsObj.filter(
+    (project) => project.flagship === true
+  );
 
   return (
     <section className="border-t border-hairline">
@@ -27,7 +31,7 @@ const HomeTopProjects = () => {
         </div>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2">
-          {topProjects.map((project) => (
+          {flagshipProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
