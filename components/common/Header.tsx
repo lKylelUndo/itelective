@@ -18,24 +18,35 @@ const Header = () => {
     { name: "Contact", href: "/contact" },
   ];
 
+  const isActiveLink = (href: string) =>
+    href === "/"
+      ? pathname === "/"
+      : pathname === href || pathname.startsWith(`${href}/`);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-6 h-16 flex justify-between items-center">
-        <Link href="/" className="font-bold text-xl tracking-tight text-primary hover:opacity-90 transition-opacity">
-          Kyle Ando
+    <header className="sticky top-0 z-50 border-b border-hairline bg-paper">
+      <div className="wrap flex h-16 items-center justify-between">
+        <Link
+          href="/"
+          className="font-display text-xl font-semibold tracking-tight text-ink"
+        >
+          Kyle Ando<span className="text-ember">.</span>
         </Link>
 
         {/* Desktop */}
-        <nav className="hidden lg:flex items-center gap-x-8 text-[14px]">
+        <nav className="hidden items-center gap-x-7 lg:flex" aria-label="Primary">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+            const isActive = isActiveLink(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "relative py-1 font-medium transition-colors hover:text-primary",
-                  isActive ? "text-primary border-b-2 border-primary" : "text-muted-foreground"
+                  "border-b-2 py-1 text-[15px] transition-colors hover:text-ember",
+                  isActive
+                    ? "border-ember text-ink"
+                    : "border-transparent text-urn"
                 )}
               >
                 {link.name}
@@ -45,34 +56,34 @@ const Header = () => {
         </nav>
 
         <button
-          className="lg:hidden p-2 text-muted-foreground hover:text-primary"
+          className="p-2 text-ink transition-colors hover:text-ember focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember lg:hidden"
           onClick={() => setOpen(!open)}
-          aria-label={open ? "Close Menu" : "Open Menu"}
+          aria-expanded={open}
+          aria-label={open ? "Close menu" : "Open menu"}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="size-6" /> : <Menu className="size-6" />}
         </button>
       </div>
 
       {/* Mobile menu */}
       <div
         className={cn(
-          "lg:hidden absolute left-0 w-full bg-background border-b border-border/80 transition-all duration-300 ease-in-out z-40",
-          open ? "top-16 opacity-100 visible" : "top-12 opacity-0 invisible pointer-events-none"
+          "absolute inset-x-0 top-16 border-b border-hairline bg-paper transition-all duration-200 ease-out lg:hidden",
+          open ? "visible opacity-100" : "invisible -translate-y-1 opacity-0"
         )}
       >
-        <nav className="flex flex-col items-center gap-y-4 py-8 px-6 text-sm">
+        <nav className="flex flex-col px-6 py-3" aria-label="Mobile">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+            const isActive = isActiveLink(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive ? "page" : undefined}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "w-full text-center py-2 font-medium rounded-md transition-colors",
-                  isActive
-                    ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground hover:bg-accent/50 hover:text-primary"
+                  "border-b border-hairline py-3 text-[15px] transition-colors last:border-b-0 hover:text-ember",
+                  isActive ? "text-ember" : "text-ink"
                 )}
               >
                 {link.name}

@@ -1,51 +1,78 @@
-import { Info } from "lucide-react";
 import Image from "next/image";
 import Skill from "../common/Skill";
-import { SKILLS } from "@/constants/skills";
+import { SKILL_GROUPS } from "@/constants/skills";
 
 const AboutBanner = () => {
   return (
-    <section className="mx-auto py-12 md:py-16 lg:py-20 container px-6">
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
-        {/* Profile Card Container */}
-        <div className="relative w-full max-w-[340px] aspect-square rounded-2xl overflow-hidden border border-border bg-card p-3 shadow-md hover:shadow-lg transition-shadow duration-300">
-          <div className="relative w-full h-full rounded-xl overflow-hidden">
-            <Image
-              src="/profile3.jpg"
-              className="object-cover"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 340px"
-              alt="Kyle Ando - Professional Profile Portrait"
+    <section className="wrap py-16 md:py-24">
+      <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-5">
+          <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+            <div
+              aria-hidden
+              className="absolute inset-0 translate-x-3 translate-y-3 bg-ember"
             />
+            <div className="relative border border-ink bg-plate p-3">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <Image
+                  src="/profile3.jpg"
+                  className="object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 400px"
+                  alt="Portrait of Kyle Ando"
+                />
+              </div>
+              <div className="mt-3 flex items-center justify-between border-t border-hairline pt-3">
+                <span className="font-mono text-[12px] text-urn">
+                  student developer — full stack
+                </span>
+                <span className="size-2 bg-ember" aria-hidden />
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* About Details */}
-        <div className="flex-1 max-w-2xl text-center lg:text-left space-y-6">
-          <h1 className="text-3xl font-extrabold tracking-tight flex items-center justify-center lg:justify-start gap-x-3 text-primary">
-            <Info className="h-6 w-6 text-indigo-600" /> Who Am I?
-          </h1>
-  
-          <p className="text-muted-foreground text-base leading-relaxed text-justify">
-            Hi! I'm Kyle Ando, a student developer passionate about building modern web
-            applications and continuously learning new technologies. I enjoy
-            working with JavaScript, React, and tools that help bring ideas to
-            life through code. I'm currently expanding my knowledge in
-            full-stack development and always open to collaboration and new
-            challenges.
+        <div className="lg:col-span-7">
+          <p className="font-mono text-[13px] text-ink">
+            <span className="text-ember">[</span> about{" "}
+            <span className="text-ember">]</span>
           </p>
-  
-          <div className="space-y-4 pt-4 border-t border-border">
-            <h2 className="text-xl font-bold tracking-tight text-primary">
-              Tech Stack
-            </h2>
-  
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 max-w-lg">
-              {SKILLS.map((s, index) => (
-                <Skill key={index} skill={s} />
+
+          <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">
+            Who <em className="font-display-italic font-medium italic">am</em>{" "}
+            I?
+          </h1>
+
+          <p className="mt-6 max-w-[58ch] text-[16px] leading-relaxed text-urn">
+            Hi! I&rsquo;m Kyle Ando, a student developer passionate about
+            building modern web applications and continuously learning new
+            technologies. I enjoy working with JavaScript, React, and tools
+            that help bring ideas to life through code. I&rsquo;m currently
+            expanding my knowledge in full-stack development and always open to
+            collaboration and new challenges.
+          </p>
+          <div className="mt-10 border-t border-hairline pt-8">
+            <h2 className="font-mono text-[13px] text-urn">Tech stack</h2>
+
+            <ul className="mt-2 divide-y divide-hairline">
+              {SKILL_GROUPS.map((group) => (
+                <li
+                  key={group.category}
+                  className="grid gap-3 py-5 sm:grid-cols-[10rem_1fr] sm:items-baseline sm:gap-6"
+                >
+                  <p className="font-mono text-[13px] text-ink">
+                    <span className="text-ember">[</span> {group.category}{" "}
+                    <span className="text-ember">]</span>
+                  </p>
+                  <ul className="flex flex-wrap gap-2">
+                    {group.skills.map((s) => (
+                      <Skill key={s} skill={s} />
+                    ))}
+                  </ul>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>

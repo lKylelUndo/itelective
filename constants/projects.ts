@@ -10,28 +10,16 @@ export type ProjectType = {
 export const projectsObj: ProjectType[] = [
   {
     id: "1",
-    project_image: "/health.png",
-    project_title: "Health Management System",
-    project_description: "A comprehensive health management platform designed to streamline patient records, appointment scheduling, and real-time data tracking.",
-    project_used_tools: ["React", "TailwindCSS", "ExpressJs", "MySQL", "Sequelize"],
-    project_repository: "https://github.com/lKylelUndo/health-management-system"
+    project_title: "AlumnAI",
+    project_description: "A full-stack platform connecting students and alumni with real-time mentorship, collaboration matchmaking, profile verification, and admin management.",
+    project_used_tools: ["NextJs", "TailwindCSS", "ExpressJs", "PostgreSQL", "Prisma", "Redis", "SocketIO"],
+    project_repository: "https://github.com/lKylelUndo/alumnai",
   },
-
   {
     id: "2",
-    project_image: "/kareramo.png",
-    project_title: "KareraMO PH",
-    project_description: "A job listing platform built with TypeScript, modern UI, and a robust backend for managing job data.",
-    project_used_tools: ["NextJs", "TailwindCSS", "ExpressJs", "PostgreSQL", "Prisma"],
-    project_repository: "https://github.com/lKylelUndo/hci-kareramo-web"
-  },
-
-  {
-    id: "3",
-    project_image: "/edukado.png",
-    project_title: "Edukado",
-    project_description: "Edukado provides quality and affordable education with modern facilities and expert lecturers.",
-    project_used_tools: ["React", "TailwindCSS", "ExpressJs", "PostgreSQL", "Prisma"],
-    project_repository: "https://github.com/lKylelUndo/school-enrollment-system",
+    project_title: "RecitReady",
+    project_description: "An AI-powered oral recitation and academic Q&A simulator with AI teacher personalities, timed drills, adaptive follow-up questions, and performance feedback.",
+    project_used_tools: ["NextJs", "TailwindCSS", "ExpressJs", "PostgreSQL", "Prisma", "Gemini AI"],
+    project_repository: "https://github.com/lKylelUndo/recitready",
   },
 ];

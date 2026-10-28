@@ -1,7 +1,7 @@
-import BlogCard from "@/components/common/BlogCard";
+import BlogRow from "@/components/common/BlogRow";
 import { blogsObj, BlogType } from "@/constants/blog";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { format } from "date-fns";
 import { notFound } from "next/navigation";
 
 export default async function BlogPageByDate({ params } : {params: Promise<{ date: string[] }>}) {
@@ -15,12 +15,34 @@ export default async function BlogPageByDate({ params } : {params: Promise<{ dat
     if (BLOGS.length === 0)
         notFound();
 
+    const label = format(new Date(`${dateParam}T00:00:00`), "MMMM d, yyyy");
+
     return (
-        <section className="px-6 mx-auto container pt-10">
-            <Link href={"/blogs"} className="flex items-center gap-x-2"> <ArrowLeft/> Back To Blogs</Link>
-            <div className="p-5 grid grid-cols-1 lg:grid-cols-3 gap-x-4  gap-y-4 mt-4">
+        <section className="wrap py-16 md:py-24">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                    <p className="font-mono text-[13px] text-ink">
+                        <span className="text-ember">[</span> journal — by date{" "}
+                        <span className="text-ember">]</span>
+                    </p>
+                    <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+                        {label}<span className="text-ember">.</span>
+                    </h1>
+                    <p className="mt-3 font-mono text-[12px] text-urn">
+                        {BLOGS.length} {BLOGS.length === 1 ? "entry" : "entries"}
+                    </p>
+                </div>
+                <Link
+                    href="/blogs"
+                    className="font-mono text-[13px] text-ink underline decoration-ember decoration-2 underline-offset-4 transition-colors hover:text-ember"
+                >
+                    Back to journal
+                </Link>
+            </div>
+
+            <div className="mt-10 border-t border-ink">
                 {BLOGS.map((blog: BlogType) => (
-                    <BlogCard key={blog.id} blog={blog} />
+                    <BlogRow key={blog.id} blog={blog} />
                 ))}
             </div>
         </section>

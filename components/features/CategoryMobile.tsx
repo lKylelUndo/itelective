@@ -11,7 +11,7 @@ const CategoryMobile = () => {
 
   return (
     <Select onValueChange={handlePathChange}>
-      <SelectTrigger className="w-30">
+      <SelectTrigger className="w-36 font-mono text-[13px]">
         <SelectValue placeholder="Category" />
       </SelectTrigger>
       <SelectContent>

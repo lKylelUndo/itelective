@@ -1,51 +1,68 @@
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectType } from "@/constants/projects";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { Github } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const ProjectCard = ({ project }: { project: ProjectType }) => {
+  // Deterministic plate pairing: odd ids get the ember field, even get ink.
+  const isEmberPlate = Number(project.id) % 2 === 1;
+
   return (
-    <Card>
-      <CardHeader>
-      <div className="relative w-full h-48">
-        <Image
-          src={`${project.project_image}`}
-          fill
-          className="object-cover rounded-t-lg"
-          alt="Project Image"
-          priority
-        />
-      </div>
-        <CardTitle>{project.project_title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <CardDescription className="leading-6 min-h-22.5">{project.project_description}</CardDescription>
-        <div className="flex flex-wrap gap-2 w-78">
-          {project.project_used_tools.map((tool, index) => (
-            <CardDescription key={index}>
-              <Button variant={"secondary"} size={"xs"}>
-                {tool}
-              </Button>
-            </CardDescription>
-          ))}
+    <article className="relative h-full">
+      {/* misregistration offset plate */}
+      <div
+        aria-hidden
+        className={cn(
+          "absolute inset-0 translate-x-2.5 translate-y-2.5",
+          isEmberPlate ? "bg-ink" : "bg-ember"
+        )}
+      />
+
+      <div className="relative flex h-full flex-col border border-ink bg-plate">
+        {/* typographic cover — a designed surface, never a missing image */}
+        <div
+          className={cn(
+            "relative aspect-[4/3] w-full",
+            isEmberPlate ? "bg-ember" : "bg-ink"
+          )}
+        >
+          <p className="absolute left-6 top-6 font-mono text-[13px] text-paper">
+            {project.project_used_tools[0]}
+          </p>
+          <p className="absolute bottom-5 left-6 right-6 font-display text-[clamp(2.25rem,3.2vw,3.25rem)] font-semibold leading-none tracking-tight text-paper">
+            {project.project_title}
+            <span aria-hidden>.</span>
+          </p>
         </div>
-      </CardContent>
-      <CardFooter>
-        <CardAction>
-        
-            <Link
-              href={`${project.project_repository}`}
+
+        <div className="flex flex-1 flex-col p-6">
+          <p className="text-[15px] leading-relaxed text-urn">
+            {project.project_description}
+          </p>
+
+          <ul className="mb-6 mt-5 flex flex-wrap gap-2">
+            {project.project_used_tools.map((tool) => (
+              <li
+                key={tool}
+                className="border border-hairline bg-paper px-2.5 py-1 font-mono text-[12px] text-ink"
+              >
+                {tool}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-auto border-t border-hairline pt-4">
+            <a
+              href={project.project_repository}
               target="_blank"
-              className="flex items-center gap-x-2"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-[13px] text-ink underline decoration-ember decoration-2 underline-offset-4 transition-colors hover:text-ember"
             >
-             <Button> View Repository <ArrowRight /></Button>
-            </Link>
-         
-        </CardAction>
-      </CardFooter>
-    </Card>
+              <Github className="size-4" aria-hidden /> Repository
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
   );
 };
 

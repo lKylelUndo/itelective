@@ -10,6 +10,15 @@ export type BlogType = {
 
 export const blogsObj: BlogType[] = [
   {
+    id: "5",
+    image: "/llccresearch.jpg",
+    title: "LLCC Research Congress",
+    description: "Presenting our capstone research at the LLCC Research Congress.",
+    content: "Joining the LLCC Research Congress was another milestone in our research journey. Standing in front of an audience to present our work pushed me to explain our ideas clearly and answer questions I hadn't fully prepared for. Each question reminded me that research isn't just about what we built—it's about being able to defend every decision behind it. Events like this keep me motivated to keep improving how I communicate my work as a developer.",
+    category: ["experiences", "technology"],
+    publishedAt: "2026-10-28",
+  },
+  {
     id: "4",
     image: "/researchcongress.jpg",
     title: "Research Congress Participant",

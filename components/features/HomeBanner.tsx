@@ -1,49 +1,80 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail } from "lucide-react";
 
 const HomeBanner = () => {
   return (
-    <section className="relative overflow-hidden py-12 md:py-20 lg:py-24">
-      <div className="container px-6 mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:justify-between">
-        <div className="flex-1 text-center lg:text-left space-y-6 max-w-2xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight md:leading-none">
-            <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-600 bg-clip-text text-transparent">
-              Modern Developer.
+    <section className="wrap py-16 md:py-24">
+      <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-7">
+          <h1 className="font-display text-[clamp(2.9rem,7vw,4.6rem)] font-semibold leading-[1.04] tracking-[-0.015em] text-ink">
+            <span
+              className="press-rise block"
+              style={{ animationDelay: "80ms" }}
+            >
+              Modern{" "}
+              <em className="font-display-italic font-medium italic">
+                Developer
+              </em>
+              <span className="text-ember">.</span>
             </span>
-            <br />
-            <span className="bg-gradient-to-r from-indigo-600 via-slate-800 to-slate-900 bg-clip-text text-transparent">
-              Modern Code.
+            <span
+              className="press-rise mt-1 block md:pl-[2ch]"
+              style={{ animationDelay: "160ms" }}
+            >
+              Modern{" "}
+              <em className="font-display-italic font-medium italic">Code</em>
+              <span className="text-ember">.</span>
             </span>
           </h1>
-          <p className="text-muted-foreground text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            Hi, I'm Kyle Ando. I build highly optimized, secure, and modern web applications with a focus on SEO, performance, and clean design architecture.
+
+          <p
+            className="press-rise mt-8 max-w-[50ch] text-[17px] leading-relaxed text-urn"
+            style={{ animationDelay: "240ms" }}
+          >
+            Hi, I&rsquo;m Kyle Ando. I build optimized, secure, modern web
+            applications with a focus on performance, SEO, and clean design
+            architecture.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
-            <Button asChild size="lg" className="group shadow-sm">
-              <Link href="/projects" className="flex items-center gap-2">
-                Explore Projects <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+
+          <div
+            className="press-rise mt-10 flex flex-wrap items-center gap-4"
+            style={{ animationDelay: "320ms" }}
+          >
+            <Button asChild size="lg" className="px-7">
+              <Link href="/projects">View Projects</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="shadow-sm">
-              <Link href="/contact" className="flex items-center gap-2">
-                Let's Talk <Mail className="h-4 w-4" />
-              </Link>
+            <Button asChild size="lg" variant="outline" className="px-7">
+              <Link href="/contact">Get in Touch</Link>
             </Button>
           </div>
         </div>
 
-        <div className="flex-1 flex justify-center lg:justify-end w-full max-w-[450px] lg:max-w-none">
-          <div className="relative w-full aspect-square max-w-[420px] lg:max-w-[480px]">
-            <Image
-              src="/robotai.png"
-              fill
-              alt="Kyle Ando - Professional Developer Portfolio Illustration"
-              priority
-              sizes="(max-width: 768px) 100vw, 480px"
-              className="object-contain"
+        <div className="lg:col-span-5">
+          <div
+            className="press-rise relative mx-auto w-full max-w-md lg:rotate-1 lg:max-w-none"
+            style={{ animationDelay: "200ms" }}
+          >
+            <div
+              aria-hidden
+              className="absolute inset-0 translate-x-3 translate-y-3 bg-ember"
             />
+            <div className="relative border border-ink bg-plate p-4 md:p-5">
+              <div className="relative aspect-square w-full">
+                <Image
+                  src="/robotai.png"
+                  fill
+                  alt="Illustration of a 3D robot, the developer's mascot"
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 400px"
+                  className="object-contain"
+                />
+              </div>
+              <div className="mt-3 flex items-center justify-between border-t border-hairline pt-3">
+                <span className="font-mono text-[12px] text-urn">specimen</span>
+                <span className="size-2 bg-ember" aria-hidden />
+              </div>
+            </div>
           </div>
         </div>
       </div>

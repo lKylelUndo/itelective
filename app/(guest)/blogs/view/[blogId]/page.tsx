@@ -1,5 +1,5 @@
 import { blogsObj } from "@/constants/blog";
-import { ArrowLeft } from "lucide-react";
+import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -13,25 +13,67 @@ export default async function ViewSingleBlogPage({ params}: { params: Promise<{ 
     notFound();
   }
 
+  const published = format(new Date(`${blog.publishedAt}T00:00:00`), "MMMM d, yyyy");
+
   return (
-    <section className="container mx-auto px-6">
-      <div className="mt-10">
-        <Link href={"/blogs"}>
-          <ArrowLeft className="inline" /> Back to Blogs
+    <article className="wrap py-16 md:py-24">
+      <div className="mx-auto max-w-[68ch]">
+        <Link
+          href="/blogs"
+          className="font-mono text-[13px] text-ink underline decoration-ember decoration-2 underline-offset-4 transition-colors hover:text-ember"
+        >
+          Back to journal
         </Link>
-      </div>
 
-      <div className="bg-background mx-auto dark:bg-card rounded-lg max-w-3xl mt-6 shadow p-8 space-y-4">
-        <div className="text-xs text-muted-foreground">
-          {blog.publishedAt}
-          {blog.category?.length ? ` • ${blog.category.join(" / ")}` : ""}
+        <header className="mt-10">
+          <p className="font-mono text-[13px] text-urn">{published}</p>
+          {blog.category && blog.category.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+              {blog.category.map((category) => (
+                <Link
+                  key={category}
+                  href={`/categories/${category}`}
+                  className="font-mono text-[13px] text-ember underline underline-offset-4 transition-colors hover:text-ink"
+                >
+                  {category}
+                </Link>
+              ))}
+            </div>
+          )}
+          <h1 className="mt-5 font-display text-[clamp(2.1rem,4.5vw,3.2rem)] font-semibold leading-[1.08] tracking-[-0.01em] text-ink">
+            {blog.title}
+          </h1>
+          <p className="mt-5 border-l-2 border-ember pl-5 text-lg leading-relaxed text-urn">
+            {blog.description}
+          </p>
+        </header>
+
+        {blog.image && (
+          <figure className="mt-10 border border-ink bg-plate p-3">
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <Image
+                src={blog.image}
+                alt={blog.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 90vw, 640px"
+                className="object-cover"
+              />
+            </div>
+          </figure>
+        )}
+
+        <div className="mt-10 border-t border-hairline pt-10">
+          <p className="text-[17px] leading-[1.75] text-ink">{blog.content}</p>
         </div>
-        <Image src={`${blog.image}`} alt="s" height={400} width={400} className="mx-auto rounded" />
-        <h1 className="text-2xl font-semibold text-center">{blog.title}</h1>
-        <p className="text-muted-foreground text-center">{blog.description}</p>
 
-        <article className="leading-7 text-[16px] text-justify mt-10">{blog.content}</article>
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-2 border-t-2 border-ink pt-5">
+          <p className="font-mono text-[12px] text-urn">Written by Kyle Ando</p>
+          <p className="font-mono text-[12px] text-urn">
+            end of entry <span className="text-ember">■</span>
+          </p>
+        </div>
       </div>
-    </section>
+    </article>
   );
 }

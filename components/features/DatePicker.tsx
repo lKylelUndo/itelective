@@ -22,33 +22,23 @@ const DatePicker = () => {
     const month = format(selectedDate, "MM")
     const day = format(selectedDate, "dd")
 
-    // console.log('year', year);
-    // console.log('month', month);
-    // console.log('day', day);
-
-
     router.push(`/blogs/date/${year}/${month}/${day}`)
   }
 
-  // console.log('d', date);
-
   return (
     <Popover>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <Button
-          asChild
           variant="outline"
           data-empty={!date}
-          className="justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
+          className="gap-2 border-hairline px-3 font-mono text-[13px] font-normal text-ink hover:data-[empty=true]:text-paper data-[empty=true]:text-urn"
         >
-          <div className="flex items-center">
-            <CalendarIcon className="mr-2" />
-            {date ? format(date, "PPP") : <span>Pick a date</span>}
-          </div>
+          <CalendarIcon className="size-4" aria-hidden />
+          {date ? format(date, "MMM d, yyyy") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent className="w-auto p-0">
+      <PopoverContent align="end" className="w-auto p-3">
         <Calendar
           mode="single"
           selected={date}
