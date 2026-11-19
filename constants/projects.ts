@@ -10,17 +10,8 @@ export type ProjectType = {
 };
 
 export const projectsObj: ProjectType[] = [
-  {
+   {
     id: "1",
-    project_image: "/dqcs.jpg",
-    project_title: "Data Quality Detective",
-    project_description: "A data quality analysis system that scans uploaded CSV datasets against six DQM principles, classifies issues by severity, and computes an overall quality score.",
-    project_used_tools: ["NextJs", "TailwindCSS", "PWA"],
-    project_repository: "https://github.com/lKylelUndo/dqcs",
-    project_live_url: "https://dqcs.vercel.app/",
-  },
-  {
-    id: "2",
     project_image: "/alumnai.jpg",
     project_title: "AlumnAI",
     project_description: "A full-stack platform connecting students and alumni with real-time mentorship, collaboration matchmaking, profile verification, and admin management.",
@@ -28,6 +19,14 @@ export const projectsObj: ProjectType[] = [
     project_repository: "https://github.com/lKylelUndo/alumnai",
     project_live_url: "https://www.alumnaicpc.online/",
     flagship: true,
+  },
+  {
+    id: "2",
+    project_image: "/cpcunisync.png",
+    project_title: "CPC Unisync",
+    project_description: "A unified campus platform for the CPC community, built with a Next.js frontend and a Laravel API backed by MySQL and Redis.",
+    project_used_tools: ["NextJs", "Laravel", "Redis", "MySQL"],
+    project_live_url: "https://cpcunisync.vercel.app/",
   },
   {
     id: "3",
@@ -38,5 +37,14 @@ export const projectsObj: ProjectType[] = [
     project_repository: "https://github.com/lKylelUndo/recitready",
     project_live_url: "https://recit-ready.vercel.app/",
     flagship: true,
+  },
+  {
+    id: "4",
+    project_image: "/dqcs.jpg",
+    project_title: "Data Quality Detective",
+    project_description: "A data quality analysis system that scans uploaded CSV datasets against six DQM principles, classifies issues by severity, and computes an overall quality score.",
+    project_used_tools: ["NextJs", "TailwindCSS", "PWA"],
+    project_repository: "https://github.com/lKylelUndo/dqcs",
+    project_live_url: "https://dqcs.vercel.app/",
   },
 ];
