@@ -19,7 +19,7 @@ const HomeBanner = () => {
               <span className="text-ember">.</span>
             </span>
             <span
-              className="press-rise mt-1 block md:pl-[2ch]"
+              className="press-rise mt-1 block lg:pl-[2ch]"
               style={{ animationDelay: "160ms" }}
             >
               Modern{" "}
@@ -50,7 +50,7 @@ const HomeBanner = () => {
           </div>
         </div>
 
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 lg:block hidden">
           <div
             className="press-rise relative mx-auto w-full max-w-md lg:rotate-1 lg:max-w-none"
             style={{ animationDelay: "200ms" }}
