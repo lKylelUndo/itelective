@@ -60,18 +60,20 @@ const HomeBanner = () => {
               className="absolute inset-0 translate-x-3 translate-y-3 bg-ember"
             />
             <div className="relative border border-ink bg-plate p-4 md:p-5">
-              <div className="relative aspect-square w-full">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <Image
-                  src="/robotai.png"
+                  src="/profile3.jpg"
                   fill
-                  alt="Illustration of a 3D robot, the developer's mascot"
+                  alt="Portrait of Kyle Ando"
                   priority
                   sizes="(max-width: 1024px) 90vw, 400px"
-                  className="object-contain"
+                  className="object-cover object-center"
                 />
               </div>
               <div className="mt-3 flex items-center justify-between border-t border-hairline pt-3">
-                <span className="font-mono text-[12px] text-urn">specimen</span>
+                <span className="font-mono text-[12px] text-urn">
+                  portrait &mdash; kyle ando
+                </span>
                 <span className="size-2 bg-ember" aria-hidden />
               </div>
             </div>

@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kyle Ando — Personal Portfolio
 
-## Getting Started
+A personal portfolio website prepared for internship/OJT applications. It showcases selected builds, a categorized tech stack, an experience journal, and a contact form.
 
-First, run the development server:
+**Live site:** [https://kyleundo.vercel.app](https://kyleundo.vercel.app)
+
+## Technologies
+
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind CSS v4 with shadcn/ui primitives and class-variance-authority
+- lucide-react, clsx, tailwind-merge, date-fns, react-day-picker, vaul
+- Deployed on Vercel
+
+## Setup
+
+Requires Node.js 20.9+ (Next.js 16).
 
 ```bash
+git clone https://github.com/lKylelUndo/itelective.git
+cd itelective
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts: `npm run build` (production build), `npm run lint` (ESLint).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+- `app/(guest)/` — Home, About, Projects, Blogs (listing, category and date filters, article view), Contact
+- `components/common/` — header, footer, cards, contact form, reusable pagination
+- `components/features/` — page sections (hero, flagship builds, services, journal, filters)
+- `components/ui/` — shadcn/ui primitives
+- `constants/` — static content for projects, blogs, services and skills
+- `styles/globals.css` — Tailwind v4 theme tokens and base styles
 
-To learn more about Next.js, take a look at the following resources:
+## Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See the live site for current screenshots: [https://kyleundo.vercel.app](https://kyleundo.vercel.app)

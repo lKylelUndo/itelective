@@ -1,4 +1,7 @@
-import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
+"use client";
+
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import { Check, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
@@ -6,7 +9,25 @@ import { Textarea } from "../ui/textarea";
 const linkCardClasses =
   "inline-flex items-center gap-2 border border-ink bg-plate px-4 py-2 text-sm text-ink transition-colors hover:bg-ink hover:text-paper";
 
+const emptyValues = { name: "", email: "", message: "" };
+
 const ContactForm = () => {
+  const [values, setValues] = useState(emptyValues);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+    setValues((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+    setValues(emptyValues);
+  };
+
   return (
     <section className="wrap py-16 md:py-24">
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
@@ -70,7 +91,24 @@ const ContactForm = () => {
               className="absolute inset-0 translate-x-2.5 translate-y-2.5 bg-hairline"
             />
             <div className="relative border border-ink bg-plate p-6 md:p-8">
-              <form className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="name"
+                    className="font-mono text-[13px] text-ink"
+                  >
+                    Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    autoComplete="name"
+                    placeholder="Your name"
+                    value={values.name}
+                    onChange={handleChange}
+                  />
+                </div>
+
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="email"
@@ -84,6 +122,8 @@ const ContactForm = () => {
                     type="email"
                     autoComplete="email"
                     placeholder="you@example.com"
+                    value={values.email}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -99,16 +139,28 @@ const ContactForm = () => {
                     name="message"
                     placeholder="Tell me about your project..."
                     className="min-h-44"
+                    value={values.message}
+                    onChange={handleChange}
                   />
                 </div>
 
-                <Button className="w-full">
+                <Button type="submit" className="w-full">
                   <MessageCircle aria-hidden /> Send Message
                 </Button>
-                <p className="font-mono text-[12px] leading-relaxed text-urn">
-                  this form saves nothing yet — email me directly for faster
-                  replies.
-                </p>
+
+                <div role="status" aria-live="polite" className="min-h-16">
+                  {submitted && (
+                    <div className="flex items-start gap-3 border border-ink bg-paper p-3">
+                      <Check
+                        className="mt-0.5 size-4 shrink-0 text-ember"
+                        aria-hidden
+                      />
+                      <p className="font-mono text-[13px] leading-relaxed text-ink">
+                        message received &mdash; i&rsquo;ll be in touch soon.
+                      </p>
+                    </div>
+                  )}
+                </div>
               </form>
             </div>
           </div>
