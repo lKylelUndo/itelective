@@ -16,8 +16,8 @@ A personal portfolio website prepared for internship/OJT applications. It showca
 Requires Node.js 20.9+ (Next.js 16).
 
 ```bash
-git clone https://github.com/lKylelUndo/itelective.git
-cd itelective
+git clone https://github.com/lKylelUndo/myportfolio.git
+cd myportfolio
 npm install
 npm run dev
 ```
